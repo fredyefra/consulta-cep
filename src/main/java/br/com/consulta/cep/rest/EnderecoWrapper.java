@@ -1,15 +1,20 @@
 package br.com.consulta.cep.rest;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 @Getter
 @Setter
 public class EnderecoWrapper {
 
-    private Long identificador;
+
+    @Size(min = 8, max = 8, message = "Cep deve possir [{max}] digitos.")
+    @NotBlank(message = "Cep não pode estar nulo.")
+    @NotEmpty(message = "Cep não pode estar vazio.")
     private String cep;
     private String logradouro;
     private String complemento;
@@ -22,12 +27,9 @@ public class EnderecoWrapper {
         this.cep = cep;
     }
 
-    public EnderecoWrapper() {
-        // TODO Auto-generated constructor stub
-    }
+    public EnderecoWrapper() {}
 
-    public EnderecoWrapper(Long identificador, String cep, String logradouro, String complemento, String bairro, String ddd) {
-        this.identificador = identificador;
+    public EnderecoWrapper(String cep, String logradouro, String complemento, String bairro, String ddd) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.complemento = complemento;

@@ -1,14 +1,15 @@
 package br.com.consulta.cep.rest;
 
+import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.ext.ExceptionMapper;
-import jakarta.ws.rs.ext.Provider;
+import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
 
-@Provider
-public class NegocioExceptionMapper implements ExceptionMapper<NegocioException> {
+//@Provider
+public class NegocioExceptionMapper implements ResponseExceptionMapper<WebApplicationException> {
+
     @Override
-    public Response toResponse(NegocioException exception) {
-        System.out.println(exception);
-        return Response.status(Response.Status.BAD_REQUEST).entity(exception.getMessage()).build();
+    public WebApplicationException toThrowable(Response response) {
+        return new WebApplicationException(response);
     }
+
 }

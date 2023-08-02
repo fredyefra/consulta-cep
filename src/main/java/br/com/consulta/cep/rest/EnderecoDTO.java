@@ -9,7 +9,6 @@ import java.io.Serializable;
 @Setter
 public class EnderecoDTO implements Serializable {
 
-    private Long identificador;
     private String cep;
     private String logradouro;
     private String complemento;
@@ -25,8 +24,7 @@ public class EnderecoDTO implements Serializable {
         // TODO Auto-generated constructor stub
     }
 
-    public EnderecoDTO(Long identificador, String cep, String logradouro, String complemento, String bairro, String ddd) {
-        this.identificador = identificador;
+    public EnderecoDTO(String cep, String logradouro, String complemento, String bairro, String ddd) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.complemento = complemento;
@@ -39,5 +37,3 @@ public class EnderecoDTO implements Serializable {
         return " CEP: " + this.cep + " - "+" LOGRADOURO: " + this.logradouro + this.complemento +  " - "+"  BAIRRO: " + this.bairro ;
     }
 }
-
-
