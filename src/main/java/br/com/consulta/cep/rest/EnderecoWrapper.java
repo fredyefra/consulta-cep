@@ -1,5 +1,6 @@
 package br.com.consulta.cep.rest;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -9,8 +10,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Entity
 public class EnderecoWrapper {
 
+    @Id
+    private Integer id;
 
     @Size(min = 8, max = 8, message = "Cep deve possir [{max}] digitos.")
     @NotBlank(message = "Cep não pode estar nulo.")
